@@ -61,7 +61,8 @@ mongoose.connection.on('error', (err) => {
  * Express configuration.
  */
 app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
-app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000);
+app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.engine('pug', require('pug').__express);
@@ -122,8 +123,8 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.get('/', homeController.index);
-app.get('/start', startController.index);
+app.get('/start', homeController.index);
+app.get('/', startController.index);
 app.get('/project/select', projectController.select);
 app.get('/project/home', projectController.home);
 app.get('/project/:projectId/template', projectController.template);

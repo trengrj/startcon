@@ -1,3 +1,5 @@
+@import "lib/font-awesome/font-awesome";
+
 body {
   margin-top: 60px;
   background: #fbfbfb;
@@ -30,6 +32,7 @@ body {
 }
 .navbar-brand img {
   max-height: 100%;
+  padding: 7px;
 }
 
 .container {
