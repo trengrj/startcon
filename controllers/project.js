@@ -31,12 +31,18 @@ exports.designer = (req, res) => {
   res.render('project/designer', {});
 };
 
-
 /**
  * Milestone page
  */
 exports.milestone = (req, res) => {
   res.render('project/milestone', {});
+};
+
+/**
+ * Congrats page
+ */
+exports.congrats = (req, res) => {
+  res.render('project/congrats', {});
 };
 
 /**
