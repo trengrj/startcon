@@ -35,6 +35,7 @@ const userController = require('./controllers/user');
 const apiController = require('./controllers/api');
 const contactController = require('./controllers/contact');
 const startController = require('./controllers/start');
+const projectController = require('./controllers/project');
 /**
  * API keys and Passport configuration.
  */
@@ -120,6 +121,10 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  */
 app.get('/', homeController.index);
 app.get('/start', startController.index);
+app.get('/project/select', projectController.select);
+
+
+
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
