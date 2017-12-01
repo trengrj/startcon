@@ -520,13 +520,51 @@ const freelancerOAuth2 = new OAuth2Strategy(
     passReqToCallback: true
   },
   (req, accessToken, refreshToken, profile, done) => {
-    User.findById(req.user._id, (err, user) => {
-      if (err) { return done(err); }
-      user.tokens.push({ kind: 'freelancer', accessToken });
-      user.save((err) => {
-        done(err, user);
+    if (req.user) {
+      User.findOne({ freelancer: profile.id }, (err, existingUser) => {
+        if (err) { return done(err); }
+        if (existingUser) {
+          req.flash('errors', { msg: 'There is already a Freelancer account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
+          done(err);
+        } else {
+          User.findById(req.user.id, (err, user) => {
+            if (err) { return done(err); }
+            user.freelancer = profile.id;
+            user.tokens.push({ kind: 'freelancer', accessToken });
+            user.email = user.email || profile.email;
+            user.profile.name = user.profile.name || profile.display_name;
+            user.save((err) => {
+              if (err) { return done(err); }
+              req.flash('info', { msg: 'Freelancer account has been linked.' });
+              done(err, user);
+            });
+          });
+        }
       });
-    });
+    } else {
+      User.findOne({ freelancer: profile.id }, (err, existingUser) => {
+        if (err) { return done(err); }
+        if (existingUser) {
+          return done(null, existingUser);
+        }
+        User.findOne({ email: profile._json.emailAddress }, (err, existingEmailUser) => {
+          if (err) { return done(err); }
+          if (existingEmailUser) {
+            req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with Freelancer manually from Account Settings.' });
+            done(err);
+          } else {
+            const user = new User();
+            user.freelancer = profile.id;
+            user.tokens.push({ kind: 'freelancer', accessToken });
+            user.email = profile.email;
+            user.profile.name = profile.display_name;
+            user.save((err) => {
+              done(err, user);
+            });
+          }
+        });
+      });
+    }
   }
 );
 // Hacky fix to pass more params to freelancer
