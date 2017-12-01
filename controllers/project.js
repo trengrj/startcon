@@ -31,6 +31,14 @@ exports.designer = (req, res) => {
   res.render('project/designer', {});
 };
 
+
+/**
+ * Milestone page
+ */
+exports.milestone = (req, res) => {
+  res.render('project/milestone', {});
+};
+
 /**
  * Template page for project
  */
