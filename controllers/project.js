@@ -1,8 +1,23 @@
+
+const Project = require('../models/Project');
+
 /**
  * Selection page for project
  */
 exports.select = (req, res) => {
   res.render('project/select', {
     title: 'Pick a Project Template'
+  });
+};
+
+exports.new = (req, res, next) => {
+  const project = new Project({
+    type: "Deep Clean" //req.body.type
+  });
+  project.save((err,proj) => {
+    if (err) { console.log(err); return next(err); }
+    console.log(proj);
+    // JESSE make this redirect to your next stage
+    res.redirect('/project/' + proj._id + '/edit');
   });
 };

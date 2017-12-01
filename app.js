@@ -125,6 +125,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 app.get('/', homeController.index);
 app.get('/start', startController.index);
 app.get('/project/select', projectController.select);
+app.get('/project/new', projectController.new);
 
 
 
