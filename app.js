@@ -216,7 +216,7 @@ app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRe
 });
 app.get('/auth/freelancer', passport.authenticate('freelancer'));
 app.get('/auth/freelancer/callback', passport.authenticate('freelancer', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/project/select');
+  res.redirect('/project/select');
 });
 
 /**
