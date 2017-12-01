@@ -1,0 +1,36 @@
+body {
+  margin-top: 60px;
+}
+
+.project-list .card-action {
+}
+.project-list .card-action a {
+  font-size: 1.6em;
+}
+.project-list .card-action small {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 8px;
+}
+.project-list .card-title {
+  font-size: 2.4em;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating) {
+  color: #2ca8ff;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-large):not(.btn-floating):hover {
+  color: #59bbff;
+}
+
+.navbar-brand {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.navbar-brand img {
+  max-height: 100%;
+}
+
+.container {
+  width: 100%;
+}
