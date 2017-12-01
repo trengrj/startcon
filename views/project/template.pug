@@ -1,71 +1,43 @@
 extends ../layout
 
 block content
-  h3(style='margin-top:35px;margin-bottom:25px;') Template Detail
 
-  div(class='template')
-    p This template is ideal for a standard decoration project. Your designer will add more job listings if required. All you need to do is lightly manage.
+  h4(class='main-title') Template Detail
 
-    div(class='template-section template-section--light-blue')
-      div(class='template-heading')
-        img(class='template-heading-icon', src='/images/MiniCube_LB.png')
-        div(class='template-heading-title') Prepare
+  p This template is ideal for a standard decoration project. Your designer will add more job listings if required. All you need to do is lightly manage.
 
-      div(class='template-node template-node-0')
-        div(class='template-node-0__body')
-          span Designer (Sequencer)
-      div(class='template-node template-node-1')
-        img(class='template-indent-arrow', src='/images/IndentArrow.png')
-        div(class='template-node-1__body')
-          span Design project
-      div(class='template-node template-node-1')
-        img(class='template-indent-arrow',src='/images/IndentArrow.png')
-        div(class='template-node-1__body')
-          span Sequence freelancers
-
-    div(class='template-section template-section--dark-blue')
-      div(class='template-heading')
-        img(class='template-heading-icon', src='/images/MiniCube_DB.png')
-        div(class='template-heading-title') Construct
-
-      div(class='template-node template-node-0')
-        div(class='template-node-0__body')
-          span Carpenter
-      div(class='template-node template-node-1')
-        img(class='template-indent-arrow', src='/images/IndentArrow.png')
-        div(class='template-node-1__body')
-          span Install inbuilt furniture
-      div(class='template-node template-node-0')
-        div(class='template-node-0__body')
-          span Painter
-      div(class='template-node template-node-1')
-        img(class='template-indent-arrow', src='/images/IndentArrow.png')
-        div(class='template-node-1__body')
-          span Paint walls
-      div(class='template-node template-node-0')
-        div(class='template-node-0__body')
-          span IKEA installer
-      div(class='template-node template-node-1')
-        img(class='template-indent-arrow', src='/images/IndentArrow.png')
-        div(class='template-node-1__body')
-          span Build furniture
-
-    div(class='template-section template-section--gray')
-      div(class='template-heading')
-        img(class='template-heading-icon', src='/images/MiniCube_G.png')
-        div(class='template-heading-title') Refine
-
-      div(class='template-node template-node-0')
-        div(class='template-node-0__body')
-          span Cleaner
-      div(class='template-node template-node-1')
-        img(class='template-indent-arrow', src='/images/IndentArrow.png')
-        div(class='template-node-1__body')
-          span Clean space
-      div(class='template-node template-node-0')
-        div(class='template-node-0__body')
-          span Florist
-      div(class='template-node template-node-1')
-        img(class='template-indent-arrow', src='/images/IndentArrow.png')
-        div(class='template-node-1__body')
-          span Deliver flowers
+  div(class='seq seq-prepare')
+    h3 Prepare
+    ul
+      li
+        span Designer (Sequencer)
+      li(class="sub")
+        span Design project
+      li(class="sub")
+        span Sequence freelancers
+  div(class='seq seq-construct')
+    h3 Construct
+    ul
+      li
+        span Carpenter
+      li(class="sub")
+        span Install inbuilt furniture
+      li
+        span Painter
+      li(class="sub")
+        span Paint walls
+      li
+        span IKEA installer
+      li(class="sub")
+        span Build furniture
+  div(class='seq seq-refine')
+    h3 Refine
+    ul
+      li
+        span Cleaner
+      li(class="sub")
+        span Clean Space
+      li
+        span Florist
+      li(class="sub")
+        span Deliver flowers
