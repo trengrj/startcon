@@ -126,14 +126,15 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 app.get('/start', startController.index);
 app.get('/', projectController.select);
 app.get('/project/select', projectController.select);
-app.get('/project/brief', projectController.brief);
-app.get('/project/inspiration', projectController.inspiration);
-app.get('/project/designer', projectController.designer);
-app.get('/project/milestone', projectController.milestone);
-app.get('/project/congrats', projectController.congrats);
-app.get('/project/steps', projectController.steps);
-app.get('/project/:projectId/template', projectController.template);
 app.get('/project/new', projectController.new);
+app.get('/project/:projectId/brief', projectController.brief);
+app.get('/project/:projectId/inspiration', projectController.inspiration);
+app.get('/project/:projectId/designer', projectController.designer);
+app.get('/project/:projectId/milestone', projectController.milestone);
+app.get('/project/:projectId/congrats', projectController.congrats);
+app.get('/project/:projectId/steps', projectController.steps);
+app.get('/project/:projectId/template', projectController.template);
+
 
 
 
