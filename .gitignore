@@ -13,7 +13,8 @@ logs
 results
 tmp
 
-#Build
+# Build
+public/css/app.css
 public/css/main.css
 
 # API keys and secrets
