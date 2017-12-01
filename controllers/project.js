@@ -25,6 +25,13 @@ exports.inspiration = (req, res) => {
 };
 
 /**
+ * Designer page
+ */
+exports.designer = (req, res) => {
+  res.render('project/designer', {});
+};
+
+/**
  * Template page for project
  */
 exports.template = (req, res) => {

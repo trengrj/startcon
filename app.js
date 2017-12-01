@@ -128,6 +128,7 @@ app.get('/', startController.index);
 app.get('/project/select', projectController.select);
 app.get('/project/brief', projectController.brief);
 app.get('/project/inspiration', projectController.inspiration);
+app.get('/project/designer', projectController.designer);
 app.get('/project/:projectId/template', projectController.template);
 app.get('/project/new', projectController.new);
 

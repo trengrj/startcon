@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h4(class='main-title') Select a designer
+  div(class='project-list')
+    div(class='row')
+      div(class='col-sm-8 col-sm-push-2 col-md-6 col-md-push-3')
+        each designer in ['Tim Baggins', 'Beth Rathgula', 'Steph Faellon']
+          div(class='card designer')
+            div(class='card-content')
+              span(class='pull-right rating')
+                i(class='material-icons') star
+                i(class='material-icons') star
+                i(class='material-icons') star
+                i(class='material-icons') star_half
+                i(class='material-icons') star_border
+                span 3.5
+              a(href='' class='card-title')
+                = designer
+              p 15 years of experience in construction industry and now working as an interior designer.
+              div(class='row grid-sm' style='margin-bottom:0')
+                div(class='col-xs-4')
+                  a(href='' class='thumbnail')
+                    img(src='http://www.contemporist.com/wp-content/uploads/2016/08/teen-bedrooms_020816_14-800x578.jpg')
+                div(class='col-xs-4')
+                  a(href='' class='thumbnail')
+                    img(src='http://www.contemporist.com/wp-content/uploads/2016/08/teen-bedrooms_020816_14-800x578.jpg')
+                div(class='col-xs-4')
+                  a(href='' class='thumbnail')
+                    img(src='http://www.contemporist.com/wp-content/uploads/2016/08/teen-bedrooms_020816_14-800x578.jpg')
