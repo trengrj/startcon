@@ -216,6 +216,10 @@ app.get('/auth/pinterest', passport.authorize('pinterest', { scope: 'read_public
 app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRedirect: '/login' }), (req, res) => {
   res.redirect('/api/pinterest');
 });
+app.get('/auth/freelancer', passport.authorize('freelancer'));
+app.get('/auth/freelancer/callback', passport.authorize('freelancer', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect('/api/freelancer');
+});
 
 /**
  * Error Handler.
