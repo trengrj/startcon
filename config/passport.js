@@ -515,6 +515,9 @@ passport.use('freelancer', new OAuth2Strategy({
   clientID: process.env.FREELANCER_ID,
   clientSecret: process.env.FREELANCER_SECRET,
   callbackURL: process.env.FREELANCER_REDIRECT_URL,
+  scope: ['basic'],
+  advancedScopes: [1, 2, 3, 4, 5, 6],
+  prompt: ['consent', 'select_account'],
   passReqToCallback: true
 },
   (req, accessToken, refreshToken, profile, done) => {
