@@ -55,6 +55,12 @@ input[type=range] + .thumb {
   font-size: 1.9em;
 }
 
+.navbar {
+  &__avatar {
+    margin-right: 5px;
+  }
+}
+
 .thumbnail {
   margin-bottom: 10px;
 }
