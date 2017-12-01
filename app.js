@@ -196,6 +196,10 @@ app.get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE
 app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), (req, res) => {
   res.redirect(req.session.returnTo || '/');
 });
+app.get('/auth/freelancer', passport.authorize('freelancer'));
+app.get('/auth/freelancer/callback', passport.authorize('freelancer', { failureRedirect: '/login' }), (req, res) => {
+  res.redirect(req.session.returnTo || '/');
+});
 
 /**
  * OAuth authorization routes. (API examples)
@@ -215,10 +219,6 @@ app.get('/auth/steam/callback', passport.authorize('openid', { failureRedirect: 
 app.get('/auth/pinterest', passport.authorize('pinterest', { scope: 'read_public write_public' }));
 app.get('/auth/pinterest/callback', passport.authorize('pinterest', { failureRedirect: '/login' }), (req, res) => {
   res.redirect('/api/pinterest');
-});
-app.get('/auth/freelancer', passport.authorize('freelancer'));
-app.get('/auth/freelancer/callback', passport.authorize('freelancer', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect('/api/freelancer');
 });
 
 /**
