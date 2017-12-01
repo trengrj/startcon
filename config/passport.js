@@ -507,6 +507,28 @@ passport.use('pinterest', new OAuth2Strategy({
 ));
 
 /**
+ * Freelancer API OAuth.
+ */
+passport.use('freelancer', new OAuth2Strategy({
+  authorizationURL: 'https://accounts.freelancer.com',
+  tokenURL: 'https://accounts.freelancer.com/token',
+  clientID: process.env.FREELANCER_ID,
+  clientSecret: process.env.FREELANCER_SECRET,
+  callbackURL: process.env.FREELANCER_REDIRECT_URL,
+  passReqToCallback: true
+},
+  (req, accessToken, refreshToken, profile, done) => {
+    User.findById(req.user._id, (err, user) => {
+      if (err) { return done(err); }
+      user.tokens.push({ kind: 'freelancer', accessToken });
+      user.save((err) => {
+        done(err, user);
+      });
+    });
+  }
+));
+
+/**
  * Login Required middleware.
  */
 exports.isAuthenticated = (req, res, next) => {
