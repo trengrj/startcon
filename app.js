@@ -64,6 +64,9 @@ app.set('host', process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0');
 app.set('port', process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.engine('pug', require('pug').__express);
+app.engine('ejs', require('ejs').__express);
+
 app.use(expressStatusMonitor());
 app.use(compression());
 app.use(sass({
@@ -122,6 +125,7 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 app.get('/', homeController.index);
 app.get('/start', startController.index);
 app.get('/project/select', projectController.select);
+app.get('/project/:projectId/status', projectController.status);
 
 
 
