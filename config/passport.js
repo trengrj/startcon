@@ -509,17 +509,16 @@ passport.use('pinterest', new OAuth2Strategy({
 /**
  * Freelancer API OAuth.
  */
-passport.use('freelancer', new OAuth2Strategy({
-  authorizationURL: 'https://accounts.freelancer.com/oauth/authorise',
-  tokenURL: 'https://accounts.freelancer.com/oauth/token',
-  clientID: process.env.FREELANCER_ID,
-  clientSecret: process.env.FREELANCER_SECRET,
-  callbackURL: process.env.FREELANCER_REDIRECT_URL,
-  scope: ['basic'],
-  advancedScopes: [1, 2, 3, 4, 5, 6],
-  prompt: ['consent', 'select_account'],
-  passReqToCallback: true
-},
+const freelancerOAuth2 = new OAuth2Strategy(
+  {
+    authorizationURL: 'https://accounts.freelancer.com/oauth/authorise',
+    tokenURL: 'https://accounts.freelancer.com/oauth/token',
+    clientID: process.env.FREELANCER_ID,
+    clientSecret: process.env.FREELANCER_SECRET,
+    callbackURL: process.env.FREELANCER_REDIRECT_URL,
+    scope: ['basic'],
+    passReqToCallback: true
+  },
   (req, accessToken, refreshToken, profile, done) => {
     User.findById(req.user._id, (err, user) => {
       if (err) { return done(err); }
@@ -529,7 +528,13 @@ passport.use('freelancer', new OAuth2Strategy({
       });
     });
   }
-));
+);
+// Hacky fix to pass more params to freelancer
+freelancerOAuth2.authorizationParams = () => ({
+  advanced_scopes: [1, 2, 3, 4, 5, 6].join(' '),
+  prompt: ['consent', 'select_account'].join(' '),
+});
+passport.use('freelancer', freelancerOAuth2);
 
 /**
  * Login Required middleware.
