@@ -16,6 +16,7 @@ tmp
 # Build
 public/css/app.css
 public/css/main.css
+public/css/materialize.css
 
 # API keys and secrets
 .env

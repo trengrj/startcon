@@ -26,6 +26,19 @@ body {
   color: #59bbff;
 }
 
+img {
+  max-width:100%;
+}
+
+textarea {
+  height: 150px;
+  border-color: #ddd;
+}
+
+input[type=range] + .thumb {
+  margin-top: -15px;
+}
+
 .navbar-brand {
   padding-top: 5px;
   padding-bottom: 5px;

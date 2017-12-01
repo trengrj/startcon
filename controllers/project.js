@@ -13,8 +13,8 @@ exports.select = (req, res) => {
 /**
  * Home page
  */
-exports.home = (req, res) => {
-  res.render('project/home', {});
+exports.brief = (req, res) => {
+  res.render('project/brief', {});
 };
 
 /**
