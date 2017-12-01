@@ -11,10 +11,17 @@ exports.select = (req, res) => {
 };
 
 /**
- * Home page
+ * Brief page
  */
 exports.brief = (req, res) => {
   res.render('project/brief', {});
+};
+
+/**
+ * Inspiration page
+ */
+exports.inspiration = (req, res) => {
+  res.render('project/inspiration', {});
 };
 
 /**

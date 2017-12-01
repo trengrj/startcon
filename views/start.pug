@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  .div(class='text-center', style='margin-top:100px;')
+  style .navbar { display: none }
+  .div(class='text-center', style='margin-top:60px;')
     img(src="/images/snake.png", style='max-width:180px;')
     .p
     h2 Home Sequencer
@@ -9,5 +10,5 @@ block content
     img(src='/images/splash-diagram.png', style='max-width:150px; margin-top:20px;margin-bottom:20px')
     .p
     .p Dream home in 3 easy steps
-    a(class='btn btn-primary', style='margin-top:30px;', href='/project/select')
+    a(class='btn btn-primary btn-large', style='margin-top:30px;', href='/project/select')
       | Login
