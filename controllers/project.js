@@ -10,6 +10,15 @@ exports.select = (req, res) => {
   });
 };
 
+/**
+ * Template page for project
+ */
+exports.template = (req, res) => {
+  res.render('project/template.pug', {
+    title: 'Template'
+  });
+};
+
 exports.new = (req, res, next) => {
   const project = new Project({
     type: "Deep Clean" //req.body.type
