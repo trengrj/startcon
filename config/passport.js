@@ -547,7 +547,7 @@ const freelancerOAuth2 = new OAuth2Strategy(
         if (existingUser) {
           return done(null, existingUser);
         }
-        User.findOne({ email: profile._json.emailAddress }, (err, existingEmailUser) => {
+        User.findOne({ email: profile.email }, (err, existingEmailUser) => {
           if (err) { return done(err); }
           if (existingEmailUser) {
             req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with Freelancer manually from Account Settings.' });
