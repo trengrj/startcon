@@ -132,7 +132,7 @@ app.get('/project/:projectId/inspiration', projectController.inspiration);
 app.get('/project/:projectId/designer', projectController.designer);
 app.get('/project/:projectId/milestone', projectController.milestone);
 app.get('/project/:projectId/congrats', projectController.congrats);
-app.get('/project/:projectId/steps', projectController.steps);
+app.get('/project/:projectId/status', projectController.status);
 app.get('/project/:projectId/template', projectController.template);
 
 

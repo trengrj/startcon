@@ -46,10 +46,10 @@ exports.congrats = (req, res) => {
 };
 
 /**
- * Steps page
+ * Status page
  */
-exports.steps = (req, res) => {
-  res.render('project/steps', {});
+exports.status = (req, res) => {
+  res.render('project/status', {});
 };
 
 /**
