@@ -511,8 +511,8 @@ passport.use('pinterest', new OAuth2Strategy({
  */
 const freelancerOAuth2 = new OAuth2Strategy(
   {
-    authorizationURL: 'https://accounts.freelancer.com/oauth/authorise',
-    tokenURL: 'https://accounts.freelancer.com/oauth/token',
+    authorizationURL: 'https://accounts.freelancer-sandbox.com/oauth/authorise',
+    tokenURL: 'https://accounts.freelancer-sandbox.com/oauth/token',
     clientID: process.env.FREELANCER_ID,
     clientSecret: process.env.FREELANCER_SECRET,
     callbackURL: process.env.FREELANCER_REDIRECT_URL,
