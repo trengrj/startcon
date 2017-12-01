@@ -12,6 +12,7 @@ const OAuthStrategy = require('passport-oauth').OAuthStrategy;
 const OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
 
 const User = require('../models/User');
+const freelancerApi = require('../lib/freelancerApi');
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -520,51 +521,58 @@ const freelancerOAuth2 = new OAuth2Strategy(
     passReqToCallback: true
   },
   (req, accessToken, refreshToken, profile, done) => {
-    if (req.user) {
-      User.findOne({ freelancer: profile.id }, (err, existingUser) => {
-        if (err) { return done(err); }
-        if (existingUser) {
-          req.flash('errors', { msg: 'There is already a Freelancer account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
-          done(err);
-        } else {
-          User.findById(req.user.id, (err, user) => {
+    freelancerApi.fetchUserSelf(accessToken)
+      .then((res) => {
+        if (req.user) {
+          User.findOne({ freelancer: res.result.id }, (err, existingUser) => {
             if (err) { return done(err); }
-            user.freelancer = profile.id;
-            user.tokens.push({ kind: 'freelancer', accessToken });
-            user.email = user.email || profile.email;
-            user.profile.name = user.profile.name || profile.display_name;
-            user.save((err) => {
+            if (existingUser) {
+              req.flash('errors', { msg: 'There is already a Freelancer account that belongs to you. Sign in with that account or delete it, then link it with your current account.' });
+              done(err);
+            } else {
+              User.findById(req.user.id, (err, user) => {
+                if (err) { return done(err); }
+                user.freelancer = res.result.id;
+                user.tokens.push({ kind: 'freelancer', accessToken });
+                user.email = user.email || res.result.email;
+                user.profile.name = user.profile.name || `${res.result.first_name} ${res.result.last_name}`;
+                user.save((err) => {
+                  if (err) { return done(err); }
+                  req.flash('info', { msg: 'Freelancer account has been linked.' });
+                  done(err, user);
+                });
+              });
+            }
+          });
+        } else {
+          User.findOne({ freelancer: res.result.id }, (err, existingUser) => {
+            if (err) { return done(err); }
+            if (existingUser) {
+              return done(null, existingUser);
+            }
+            User.findOne({ email: res.result.email }, (err, existingEmailUser) => {
               if (err) { return done(err); }
-              req.flash('info', { msg: 'Freelancer account has been linked.' });
-              done(err, user);
+              if (existingEmailUser) {
+                req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with Freelancer manually from Account Settings.' });
+                done(err);
+              } else {
+                const user = new User();
+                user.freelancer = res.result.id;
+                user.tokens.push({ kind: 'freelancer', accessToken });
+                user.email = res.result.email;
+                user.profile.name = `${res.result.first_name} ${res.result.last_name}`;
+                user.save((err) => {
+                  done(err, user);
+                });
+              }
             });
           });
         }
+      })
+      .catch((err) => {
+        req.flash('errors', { msg: err.message });
+        done(err);
       });
-    } else {
-      User.findOne({ freelancer: profile.id }, (err, existingUser) => {
-        if (err) { return done(err); }
-        if (existingUser) {
-          return done(null, existingUser);
-        }
-        User.findOne({ email: profile.email }, (err, existingEmailUser) => {
-          if (err) { return done(err); }
-          if (existingEmailUser) {
-            req.flash('errors', { msg: 'There is already an account using this email address. Sign in to that account and link it with Freelancer manually from Account Settings.' });
-            done(err);
-          } else {
-            const user = new User();
-            user.freelancer = profile.id;
-            user.tokens.push({ kind: 'freelancer', accessToken });
-            user.email = profile.email;
-            user.profile.name = profile.display_name;
-            user.save((err) => {
-              done(err, user);
-            });
-          }
-        });
-      });
-    }
   }
 );
 // Hacky fix to pass more params to freelancer

@@ -203,7 +203,7 @@ app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRe
   res.redirect(req.session.returnTo || '/');
 });
 app.get('/auth/freelancer', passport.authorize('freelancer'));
-app.get('/auth/freelancer/callback', passport.authorize('freelancer', { failureRedirect: '/login' }), (req, res) => {
+app.get('/auth/freelancer/callback', passport.authenticate('freelancer', { failureRedirect: '/login' }), (req, res) => {
   res.redirect(req.session.returnTo || '/');
 });
 
