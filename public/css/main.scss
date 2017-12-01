@@ -68,3 +68,10 @@ textarea {
 .fa {
   margin-right: 6px;
 }
+
+.project-item > a {
+  color: black;
+}
+.project-item:hover,.project-item:focus {
+  background-color: #f0f0f0;
+}
