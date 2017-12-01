@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
   github: String,
   instagram: String,
   linkedin: String,
+  freelancer: String,
   steam: String,
   tokens: Array,
 
