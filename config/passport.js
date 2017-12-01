@@ -510,8 +510,8 @@ passport.use('pinterest', new OAuth2Strategy({
  * Freelancer API OAuth.
  */
 passport.use('freelancer', new OAuth2Strategy({
-  authorizationURL: 'https://accounts.freelancer.com',
-  tokenURL: 'https://accounts.freelancer.com/token',
+  authorizationURL: 'https://accounts.freelancer.com/oauth/authorise',
+  tokenURL: 'https://accounts.freelancer.com/oauth/token',
   clientID: process.env.FREELANCER_ID,
   clientSecret: process.env.FREELANCER_SECRET,
   callbackURL: process.env.FREELANCER_REDIRECT_URL,
