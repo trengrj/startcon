@@ -11,6 +11,13 @@ exports.select = (req, res) => {
 };
 
 /**
+ * Home page
+ */
+exports.home = (req, res) => {
+  res.render('project/home', {});
+};
+
+/**
  * Template page for project
  */
 exports.template = (req, res) => {
