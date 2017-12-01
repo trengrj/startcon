@@ -7,6 +7,9 @@ body {
 
 .project-list .card-action {
 }
+.project-list .card:hover,.project-list .card:focus {
+  background-color: #f0f0f0;
+}
 .project-list .card-action a {
   font-size: 1.6em;
 }

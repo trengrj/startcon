@@ -123,8 +123,8 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.get('/start', homeController.index);
-app.get('/', startController.index);
+app.get('/start', startController.index);
+app.get('/', projectController.select);
 app.get('/project/select', projectController.select);
 app.get('/project/brief', projectController.brief);
 app.get('/project/inspiration', projectController.inspiration);
@@ -216,7 +216,7 @@ app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRe
 });
 app.get('/auth/freelancer', passport.authorize('freelancer'));
 app.get('/auth/freelancer/callback', passport.authenticate('freelancer', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
+  res.redirect(req.session.returnTo || '/project/select');
 });
 
 /**
