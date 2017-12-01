@@ -131,6 +131,7 @@ app.get('/project/inspiration', projectController.inspiration);
 app.get('/project/designer', projectController.designer);
 app.get('/project/milestone', projectController.milestone);
 app.get('/project/congrats', projectController.congrats);
+app.get('/project/steps', projectController.steps);
 app.get('/project/:projectId/template', projectController.template);
 app.get('/project/new', projectController.new);
 

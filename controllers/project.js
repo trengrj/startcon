@@ -46,6 +46,13 @@ exports.congrats = (req, res) => {
 };
 
 /**
+ * Steps page
+ */
+exports.steps = (req, res) => {
+  res.render('project/steps', {});
+};
+
+/**
  * Template page for project
  */
 exports.template = (req, res) => {

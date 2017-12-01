@@ -122,6 +122,102 @@ input[type=range] + .thumb {
   width: 100%;
 }
 
+.seq {
+  background: url('../images/cube-prepare.png') no-repeat left 5px;
+  padding-top: 3px;
+
+  h3 {
+    font-size: 1.4em;
+    text-align: center;
+    font-weight: bold;
+  }
+  ul {
+    margin-left: 55px;
+
+    li {
+      position: relative;
+      margin-bottom: 10px;
+
+      span, a {
+        border-radius: 6px;
+        border: 2px solid #2ca8ff;
+        text-align: center;
+        padding: 5px;
+        font-size: 1.2em;
+        display: block;
+      }
+
+      &.sub {
+        padding-left: 50px;
+        padding-right: 20px;
+
+        &:before {
+          position: absolute;
+          top: 5px;
+          left: 15px;
+          content: 'subdirectory_arrow_right';
+          color: #2ca8ff;
+          font-family: 'Material Icons';
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24px;
+          line-height: 1;
+          letter-spacing: normal;
+          text-transform: none;
+          display: inline-block;
+          white-space: nowrap;
+          word-wrap: normal;
+          direction: ltr;
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+      }
+
+        &.sub span, &.sub a {
+          background: #84ccff;
+        }
+      }
+    }
+  }
+
+  &.seq-refine {
+    background-image: url('../images/cube-refine.png');
+
+    ul li span, ul li a {
+      border-color: #b7b7b7;
+    }
+    ul li.sub:before {
+      color: #b7b7b7;
+    }
+    ul li.sub span, ul li.sub a {
+      background-color: #e7e7e7;
+    }
+  }
+
+  &.seq-construct {
+    background-image: url('../images/cube-construct.png');
+
+    ul li span, ul li a {
+      border-color: #3472f7;
+    }
+    ul li.sub:before {
+      color: #3472f7;
+    }
+    ul li.sub span, ul li.sub a {
+      background-color: #9ebdff;
+    }
+  }
+
+  ul li.complete {
+    span, a {
+      border-color: #6ccd7c;
+      background-color: #6ccd7c !important;
+    }
+    &:before {
+      color: #6ccd7c;
+    }
+  }
+}
+
 
 .template-section {
   margin-bottom: 25px;
