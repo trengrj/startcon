@@ -56,25 +56,29 @@ exports.status0 = (req, res) => {
 
 exports.status1 = (req, res) => {
   res.render('project/status', {
-    stage: 1
+    stage: 1,
+    remainingCost: '11,250',
   });
 };
 
 exports.status2 = (req, res) => {
   res.render('project/status', {
-    stage: 2
+    stage: 2,
+    remainingCost: '11,250',
   });
 };
 
 exports.status3 = (req, res) => {
   res.render('project/status', {
-    stage: 3
+    stage: 3,
+    remainingCost: '6,835',
   });
 };
 
 exports.status4 = (req, res) => {
   res.render('project/status', {
-    stage: 4
+    stage: 4,
+    remainingCost: '2,420',
   });
 };
 
