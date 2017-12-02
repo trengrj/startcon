@@ -244,3 +244,9 @@ input[type=range] + .thumb {
 .chat-dialog {
   padding: 10px;
 }
+.invisible-trigger-btn {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+}
