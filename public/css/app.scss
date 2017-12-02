@@ -59,6 +59,8 @@ input[type=range] + .thumb {
 .navbar {
   &__avatar {
     margin-right: 5px;
+    width: 40px;
+    border-radius: 20px;
   }
 }
 
