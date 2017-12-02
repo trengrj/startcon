@@ -48,9 +48,36 @@ exports.congrats = (req, res) => {
 /**
  * Status page
  */
-exports.status = (req, res) => {
-  res.render('project/status', {});
+exports.status0 = (req, res) => {
+  res.render('project/status', {
+    stage: 0
+  });
 };
+
+exports.status1 = (req, res) => {
+  res.render('project/status', {
+    stage: 1
+  });
+};
+
+exports.status2 = (req, res) => {
+  res.render('project/status', {
+    stage: 2
+  });
+};
+
+exports.status3 = (req, res) => {
+  res.render('project/status', {
+    stage: 3
+  });
+};
+
+exports.status4 = (req, res) => {
+  res.render('project/status', {
+    stage: 4
+  });
+};
+
 
 /**
  * Template page for project
