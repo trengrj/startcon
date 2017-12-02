@@ -123,17 +123,22 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.get('/start', homeController.index);
-app.get('/', startController.index);
+app.get('/start', startController.index);
+app.get('/', projectController.select);
 app.get('/project/select', projectController.select);
-app.get('/project/brief', projectController.brief);
-app.get('/project/inspiration', projectController.inspiration);
-app.get('/project/designer', projectController.designer);
-app.get('/project/milestone', projectController.milestone);
-app.get('/project/congrats', projectController.congrats);
-app.get('/project/steps', projectController.steps);
-app.get('/project/:projectId/template', projectController.template);
 app.get('/project/new', projectController.new);
+app.get('/project/:projectId/brief', projectController.brief);
+app.get('/project/:projectId/inspiration', projectController.inspiration);
+app.get('/project/:projectId/designer', projectController.designer);
+app.get('/project/:projectId/milestone', projectController.milestone);
+app.get('/project/:projectId/congrats', projectController.congrats);
+app.get('/project/:projectId/status/0', projectController.status0);
+app.get('/project/:projectId/status/1', projectController.status1);
+app.get('/project/:projectId/status/2', projectController.status2);
+app.get('/project/:projectId/status/3', projectController.status3);
+app.get('/project/:projectId/status/4', projectController.status4);
+app.get('/project/:projectId/template', projectController.template);
+
 
 
 
@@ -214,9 +219,9 @@ app.get('/auth/linkedin', passport.authenticate('linkedin', { state: 'SOME STATE
 app.get('/auth/linkedin/callback', passport.authenticate('linkedin', { failureRedirect: '/login' }), (req, res) => {
   res.redirect(req.session.returnTo || '/');
 });
-app.get('/auth/freelancer', passport.authorize('freelancer'));
+app.get('/auth/freelancer', passport.authenticate('freelancer'));
 app.get('/auth/freelancer/callback', passport.authenticate('freelancer', { failureRedirect: '/login' }), (req, res) => {
-  res.redirect(req.session.returnTo || '/');
+  res.redirect('/project/select');
 });
 
 /**

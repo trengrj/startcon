@@ -38,7 +38,7 @@ block content
                 label(for='carpenter') Carpenter
               p Optional
               p
-                input(type='checkbox' class='filled-in' id='painter')
+                input(type='checkbox' class='filled-in' id='painter' onchange='changePrice(this);')
                 label(for='painter') Painter
               p
                 input(type='checkbox' class='filled-in' id='ikea' checked='checked')
@@ -50,8 +50,8 @@ block content
                 input(type='checkbox' class='filled-in' id='florist')
                 label(for='florist') Florist
           h5(class='text-center' style='font-weight:bold') Projected budget
-          h3(class='text-center') $12,240
+          h3(class='text-center' id='milestone-price') $12,240
         div(class='clear clearfix text-center' style='margin-top:15px')
-          a(class='btn waves-effect waves-light btn-large')
+          a(class='btn waves-effect waves-light btn-large' href='/project/1/status/1')
             | Approve and List
             i(class='material-icons right') send

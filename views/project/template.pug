@@ -1,9 +1,11 @@
 extends ../layout
 
 block content
-  h4(class='main-title') Status
-  h5(class='text-center' style='font-weight:bold') $11,250
-  h6(class='text-center') remaining
+
+  h4(class='main-title') Template Detail
+
+  p This template is ideal for a standard decoration project. Your designer will add more job listings if required. All you need to do is lightly manage.
+
   div(class='seq seq-prepare')
     h3 Prepare
     ul
@@ -16,9 +18,9 @@ block content
   div(class='seq seq-construct')
     h3 Construct
     ul
-      li(class='complete')
+      li
         span Carpenter
-      li(class="sub complete")
+      li(class="sub")
         span Install inbuilt furniture
       li
         span Painter
@@ -39,3 +41,6 @@ block content
         span Florist
       li(class="sub")
         span Deliver flowers
+  div(class='text-center', style='margin-bottom:40px;')
+    a(class='btn btn-primary btn-large', style='margin-top:30px;', href='/project/1/brief')
+      | Select Template
