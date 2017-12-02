@@ -25,6 +25,17 @@ block content
         span Install inbuilt furniture
       li(class=(stage >= 2 ? 'complete' : ''))
         span Painter
+        if stage == 3
+          div(class='chat-dialog')
+            p Would you like to buy the premium paint for $80 more?
+            div(class='row')
+              div(class='col-xs-6 text-center')
+                a(class='btn btn-clear btn-sm' href='/project/1/status/4')
+                  | No
+              div(class='col-xs-6 text-center')
+                a(class='btn btn-info btn-sm' href='/project/1/status/4')
+                  | Yes
+
       li(class=(stage >= 4 ? 'sub complete' : 'sub'))
         span Paint walls
       li(class=(stage >= 4 ? 'complete' : ''))

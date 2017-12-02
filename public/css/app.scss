@@ -150,7 +150,8 @@ input[type=range] + .thumb {
       position: relative;
       margin-bottom: 10px;
 
-      span, a {
+      > span,
+      > a {
         border-radius: 6px;
         border: 2px solid #2ca8ff;
         text-align: center;
@@ -182,9 +183,10 @@ input[type=range] + .thumb {
           direction: ltr;
           text-rendering: optimizeLegibility;
           -webkit-font-smoothing: antialiased;
-      }
+        }
 
-        &.sub span, &.sub a {
+        &.sub > span,
+        &.sub > a {
           background: #84ccff;
         }
       }
@@ -194,13 +196,15 @@ input[type=range] + .thumb {
   &.seq-refine {
     background-image: url('../images/cube-refine.png');
 
-    ul li span, ul li a {
+    ul li > span,
+    ul li > a {
       border-color: #b7b7b7;
     }
     ul li.sub:before {
       color: #b7b7b7;
     }
-    ul li.sub span, ul li.sub a {
+    ul li.sub > span,
+    ul li.sub > a {
       background-color: #e7e7e7;
     }
   }
@@ -208,19 +212,22 @@ input[type=range] + .thumb {
   &.seq-construct {
     background-image: url('../images/cube-construct.png');
 
-    ul li span, ul li a {
+    ul li > span,
+    ul li > a {
       border-color: #3472f7;
     }
     ul li.sub:before {
       color: #3472f7;
     }
-    ul li.sub span, ul li.sub a {
+    ul li.sub > span,
+    ul li.sub > a {
       background-color: #9ebdff;
     }
   }
 
   ul li.complete {
-    span, a {
+    > span,
+    > a {
       border-color: #6ccd7c;
       background-color: #6ccd7c !important;
     }
@@ -228,4 +235,12 @@ input[type=range] + .thumb {
       color: #6ccd7c;
     }
   }
+}
+
+.btn-clear {
+  background: transparent;
+  color: gray;
+}
+.chat-dialog {
+  padding: 10px;
 }
