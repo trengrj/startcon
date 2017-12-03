@@ -1,5 +1,7 @@
 
 const Project = require('../models/Project');
+const freelancerApi = require('../lib/freelancerApi');
+const _ = require('lodash');
 
 /**
  * Selection page for project
@@ -28,7 +30,15 @@ exports.inspiration = (req, res) => {
  * Designer page
  */
 exports.designer = (req, res) => {
-  res.render('project/designer', {});
+  const token = _.last(_.filter(req.user.tokens, { kind: 'freelancer' }));
+  return freelancerApi.postCreateProject(token.accessToken)
+    .then(() => {
+      res.render('project/designer', {});
+    })
+    .catch((err) => {
+      req.flash('errors', { msg: err.message });
+      res.render('project/designer', {});
+    });
 };
 
 /**
